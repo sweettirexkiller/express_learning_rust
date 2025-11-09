@@ -1,0 +1,7 @@
+*/target/
+
+# Well, this depends... See below!
+*/Cargo.lock
+Cargo.lock
+
+target/*
