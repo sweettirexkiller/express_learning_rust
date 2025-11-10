@@ -108,7 +108,7 @@ fn main() {
 
     println!("six is {:?}, none is {:?}", six, none);
 
-    let some_value = Sone(3);
+    let some_value = Some(3);
     match some_value {
         Some(3) => println!("three"),
         _ => (),    
