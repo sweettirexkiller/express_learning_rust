@@ -37,4 +37,7 @@ fn main() {
     let z: char = 'ℤ';
     let heart_eyed_cat = '😻';
 
+    // compound types
+    
+
 }
