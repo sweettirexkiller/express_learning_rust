@@ -15,6 +15,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
 pub struct Config {
     pub query: String,
     pub filename: String,
+    pub case_sensitive: bool,
 }
 
 impl Config {
@@ -28,6 +29,7 @@ impl Config {
         Ok(Config {
             query: query,
             filename: filename,
+            case_sensitive: std::env::var("CASE_INSENSITIVE").is_err(),
         })
     }
 }
@@ -66,9 +68,9 @@ mod tests {
         let query = "duct".to_string();
 
         let contests = "\
-        Rust: safe, fast, productive.
-        Pick three.
-        duct tape.";
+        Rust: 
+        safe, fast, productive.
+        Pick three.";
 
         assert_eq!(vec!["safe, fast, productive."], search_case_sensitive(query, contests));
     }
@@ -78,7 +80,10 @@ mod tests {
         let query = "rUsT".to_string();
 
         let contests = "\
-        Rust: safe, fast, productive.
+        Rust: 
+        safe, fast, productive.
+        Pick three.
+        Duct tape.
         Trust me.";
 
         assert_eq!(
